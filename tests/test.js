@@ -79,18 +79,28 @@ exports.normalizedSearchFields = function(test){
 	};
 
 	var requiredResult = {
-		name: 'andre alcada',
+		name: 'André Alçada',
 		email: 'andre.padez@gmail.com',
 		phone: 912345678,
 		address: {
-			city: 'olhao',
-			county: 'alges',
+			city: 'Olhão',
+			county: 'Algés',
 			localAddress: {
-				streetName: 'calcada de sao juliao',
+				streetName: 'Calçada de São Julião',
 				building: '13',
 				apartment: 'A'
 			}
-		} 
+		},
+		normalized: {
+			name: 'andre alcada',
+			address: {
+				city: 'olhao',
+				county: 'alges',
+				localAddress: {
+					streetName: 'calcada de sao juliao'
+				}
+			}
+		}		 
 	};
 	test.expect(1);
 	var newDoc = normalizer.normalizeSearchFields(doc, Person);

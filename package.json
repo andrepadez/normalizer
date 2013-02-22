@@ -1,6 +1,6 @@
 {
   "name": "normalizer",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Better string sort for Mongoose Models, accounting for special (accentuated and such) utf8 characters",
   "main": "index.js",
   "scripts": {

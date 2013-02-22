@@ -82,15 +82,16 @@ var normalizeSearchFields = exports.normalizeSearchFields = function(doc, model,
 				} else {
 					newDoc[key] = typeof doc[key] === 'string'? normalize(doc[key], keepCase) : doc[key];
 				}
-			} else {
-				newDoc[key] = doc[key];
 			}
 		}
 		return newDoc;
 	};
 
 	var finalDoc = {normalized: {}};
-	finalDoc = recurse(doc, finalDoc.normalized, model.schema.tree.normalized);
+	for(var key in doc){
+		finalDoc[key] = doc[key];
+	}
+	finalDoc.normalized = recurse(doc, finalDoc.normalized, model.schema.tree.normalized);
 	return finalDoc;
 };
 
