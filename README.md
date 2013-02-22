@@ -34,17 +34,14 @@ You can use it directly to normalize a string:
     
 Here is an example insert:
 
-    var doc = req.body;
-    doc = normalizer.normalizeSearchFields(doc, Person);
+    var doc = normalizer.normalizeSearchFields(req.body, Person);    
     var person = new Person(doc);
     person.save();
     
 and for filtering and sorting:
     
-    var filter = {nome: 'André'};
-    normalizer.treatFilter(filter);
-    var sort = {nome: 1};
-    normalizer.treatSort(sort);
+    var filter = normalizer.treatFilter({name: 'André'});
+    var sort = normalizer.treatSort({name: 1});
     Person.find(filter).sort(sort).exec(function(err, people){....});
     //you can expect the correct results here
 
