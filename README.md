@@ -203,7 +203,6 @@ Road Map
 -----
 
 <ul>
-    <li>Implement more than one level of deepness in <code>treatFilter</code> and <code>treatSort</code></li>
     <li>add more characters to the charMap - that will be up to you (: </li>
 </ul>
 
