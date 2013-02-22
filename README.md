@@ -40,8 +40,8 @@ Here is an example insert:
     
 and for filtering and sorting:
     
-    var filter = normalizer.treatFilter({name: 'André'});
-    var sort = normalizer.treatSort({name: 1});
+    var filter = normalizer.normalizeFilter({name: 'André'});
+    var sort = normalizer.normalizeSort({name: 1});
     Person.find(filter).sort(sort).exec(function(err, people){....});
     //you can expect the correct results here
 
