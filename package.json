@@ -1,0 +1,24 @@
+{
+  "name": "normalizer",
+  "version": "0.1.0",
+  "description": "Better string sort for Mongoose Models, accounting for special (accentuated and such) utf8 characters",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andrepadez/normalizer.git"
+  },
+  "keywords": [
+    "utf8",
+    "string",
+    "search"
+  ],
+  "author": {
+    "name": "André Alçada Padez",
+    "email": "andre.padez@gmail.com",
+    "url": "http://andrepadez.com"
+  },
+  "license": "MIT"
+}
