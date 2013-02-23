@@ -15,6 +15,7 @@ var normalize = exports.normalize = function(origString, keepCase){
 };
 
 var normalizeFilter = exports.normalizeFilter = function(origFilter, model, wholeString, keepCase){
+	var schema = model.schema? model.schema.tree.normalized : model;
 	var newFilter = {};
 	var finalFilter = {};
 
@@ -43,11 +44,12 @@ var normalizeFilter = exports.normalizeFilter = function(origFilter, model, whol
 		}
 		return newFilter;
 	};
-	finalFilter = recurse(origFilter, [], model.schema.tree.normalized);
+	finalFilter = recurse(origFilter, [], schema);
 	return finalFilter;	
 };
 
 var normalizeSort = exports.normalizeSort = function(origSort, model){
+	var schema = model.schema? model.schema.tree.normalized : model;
 	var newSort = {};
 	var finalSort = {};
 
@@ -67,11 +69,12 @@ var normalizeSort = exports.normalizeSort = function(origSort, model){
 		}
 		return newSort;
 	};
-	finalSort = recurse(origSort, [], model.schema.tree.normalized);
+	finalSort = recurse(origSort, [], schema);
 	return finalSort;	
 };
 
 var normalizeSearchFields = exports.normalizeSearchFields = function(doc, model, keepCase){
+	var schema = model.schema? model.schema.tree.normalized : model;
 	var recurse = function(doc, normalized, schema){
 		var newDoc = {};
 		for(var key in doc){
@@ -91,7 +94,7 @@ var normalizeSearchFields = exports.normalizeSearchFields = function(doc, model,
 	for(var key in doc){
 		finalDoc[key] = doc[key];
 	}
-	finalDoc.normalized = recurse(doc, finalDoc.normalized, model.schema.tree.normalized);
+	finalDoc.normalized = recurse(doc, finalDoc.normalized, schema);
 	return finalDoc;
 };
 

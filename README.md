@@ -1,18 +1,21 @@
 Normalizer
 ========
 
-Simple string normalizer to use with Mongoose models; helps with filtering and sorting strings with non-english UTF8 characters.   
+Simple string normalizer to use with Mongoose models or directly with Mongo; helps with filtering and sorting strings with non-english UTF8 characters.   
 I have built it to fit my current needs for the project i'm working on;   
 this is an open invitation for you to fork it and adapt it to your needs or contribute to make it more general-purpose;
 First contribution i need, is to complete the charMap object with the characters i left out.
 
 <h3>you should use it because:</h3>
-* Simple to use
-* Not a Mongoose Plugin!!!
-* Little or no overhead
-* 4 methods to rule them all
-* All methods run synchronously 
-* uses node-unit for testing
+<ul>
+    <li>Designed for Mongoose, but works just as easily with MongoDB</li>
+    <li>Not a Plugin!!!</li>
+    <li>Simple to use</li>
+    <li>Little or no overhead</li>
+    <li>4 methods to rule them all</li>
+    <li>All methods run synchronously</li>
+    <li>uses node-unit for testing</li>
+</ul>
 
 <h3>you should look away if:</h3>
 * you already work with a plugin that solves your problem well
@@ -36,6 +39,19 @@ Here is an example insert:
 
     var doc = req.body;
     doc = normalizer.normalizeSearchFields(doc, Person);
+    var person = new Person(doc);
+    person.save();
+
+Using with Mongo:
+    //you just have to pass an object, containing the fields to be normalized:
+    var schema = {
+        normalized: {
+            name: String,
+            ....
+        }
+    };
+    var doc = req.body;
+    doc = normalizer.normalizeSearchFields(doc, schema);
     var person = new Person(doc);
     person.save();
     
@@ -167,7 +183,7 @@ API
 <br>
 <code>normalizer.normalizeSearchFields()</code>
 
-    exports.normalizeSearchFields = function(Object doc, Mongoose.Model model[, Boolean keepCase]){
+    exports.normalizeSearchFields = function(Object doc, Mongoose.Model|Object model[, Boolean keepCase]){
         //does not return, only updates the doc object
     }
     
@@ -180,7 +196,7 @@ API
 <br>
 <code>normalizer.normalizeFilter()</code>
 
-    exports.normalizeFilter = function(Object filter, Mongoose.Model model[, Boolean wholeString][, Boolean keepCase){
+    exports.normalizeFilter = function(Object filter, Mongoose.Model|Object model[, Boolean wholeString][, Boolean keepCase){
         //returns normalized filter object
         //if wholeString == false -> a regExp is used ( /text/i ), ideal for fuzzy search or 'like' functionality 
     }
@@ -192,7 +208,7 @@ API
 <br>
 <code>normalizer.normalizeSort()</code>
 
-    exports.normalizeSort = function(Object sort, Mongoose.Model model[, Boolean wholeString]){
+    exports.normalizeSort = function(Object sort, Mongoose.Model|Object model[, Boolean wholeString]){
         //returns normalized sort object
     }
     
