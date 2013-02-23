@@ -37,8 +37,7 @@ You can use it directly to normalize a string:
     
 Here is an example insert:
 
-    var doc = req.body;
-    doc = normalizer.normalizeSearchFields(doc, Person);
+    var doc = normalizer.normalizeSearchFields(req.body, Person);    
     var person = new Person(doc);
     person.save();
 
@@ -57,10 +56,8 @@ Using with Mongo:
     
 and for filtering and sorting:
     
-    var filter = {nome: 'André'};
-    normalizer.treatFilter(filter);
-    var sort = {nome: 1};
-    normalizer.treatSort(sort);
+    var filter = normalizer.normalizeFilter({name: 'André'});
+    var sort = normalizer.normalizeSort({name: 1});
     Person.find(filter).sort(sort).exec(function(err, people){....});
     //you can expect the correct results here
 
@@ -219,7 +216,6 @@ Road Map
 -----
 
 <ul>
-    <li>Implement more than one level of deepness in <code>treatFilter</code> and <code>treatSort</code></li>
     <li>add more characters to the charMap - that will be up to you (: </li>
 </ul>
 
