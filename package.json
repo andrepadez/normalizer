@@ -1,6 +1,6 @@
 {
   "name": "normalizer",
-  "version": "1.2.0",
+  "version": "1.2.4",
   "description": "Better string filter and sort for MongoDB and Mongoose Models, accounting for special (accentuated and such) utf8 characters",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,9 @@
   "keywords": [
     "utf8",
     "string",
-    "search"
+    "search", 
+    "mongodb",
+    "mongoose"
   ],
   "author": {
     "name": "André Alçada Padez",

@@ -18,9 +18,11 @@ First contribution i need, is to complete the charMap object with the characters
 </ul>
 
 <h3>you should look away if:</h3>
-* you already work with a plugin that solves your problem well
-* you are working with big data - this uses RegExp engine, can clog your queries
-* potato
+<ul>
+    <li>you already work with a plugin that solves your problem well</li>
+    <li>you are working with big data - this uses RegExp engine, can clog your queries</li>
+    <li>potato</li>
+</ul>
 
 Usage
 -----
