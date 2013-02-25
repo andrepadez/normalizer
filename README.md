@@ -43,6 +43,7 @@ Here is an example insert:
     person.save();
 
 Using with Mongo:
+
     //you just have to pass an object, containing the fields to be normalized:
     var schema = {
         normalized: {
